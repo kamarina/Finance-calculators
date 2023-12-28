@@ -27,3 +27,19 @@ Please enter the principal amount you would like to deposit: 1000
 Please enter the annual interest rate: 5
 How many years would you like to invest for: 3
 Please enter the interest type 'simple' or 'compound': compound
+
+## Home Loan Repayment Calculator
+
+The home loan repayment calculator helps you determine the monthly repayment amount for a home loan.
+
+### Input Parameters:
+- Present value of the house
+- Annual interest rate (as a percentage)
+- Repayment period in months
+
+#### Example:
+```python
+Please enter the present value of the house: 200000
+Please enter the annual interest rate (as a percentage): 4.5
+Enter the number of months over which the bond will be repaid: 360
+

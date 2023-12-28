@@ -41,7 +41,6 @@ Please enter the interest type 'simple' or 'compound': compound
 
 ```python
 #Home Loan Repayment Calculator
-
 Please enter the present value of the house: 200000
 Please enter the annual interest rate (as a percentage): 4.5
 Enter the number of months over which the bond will be repaid: 360

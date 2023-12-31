@@ -1,5 +1,5 @@
-# a program that allows the user to access two financial calculators:
-# an investment calculator and a home loan repayment calculator
+"""a program that allows the user to access two financial calculators:
+an investment calculator and a home loan repayment calculator"""
 
 import math
 

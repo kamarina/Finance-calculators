@@ -29,9 +29,10 @@ def investment_interest():
             interest_type = input("Please enter the interest type 'simple' or 'compound': ").lower()
             if interest_type not in ["simple", "compound"]:
                 print("Invalid selection. Please type 'simple' or 'compound'.")
+                continue
 
 
-            # Calculate total amount based on selected interest type
+            # Calculate the total amount based on the selected interest type
             if interest_type == "simple":
                 total_amount = principal * (1 + interest * time)
                 interest_earned = total_amount - principal
@@ -42,8 +43,8 @@ def investment_interest():
                 interest_earned = total_amount - principal
                 print(f"You will be earning {interest_earned} in interest if you invest {principal} for {time} years.")
                 return interest_earned
-        except ZeroDivisionError:
-            print("You cannot divide by 0. ")
+        except ValueError:
+            print("Invalid input. Please enter a numeric value. ")
 
 
 # Function to calculate and display bond repayment amount
@@ -56,13 +57,19 @@ def bond_interest():
             monthly_interest = interest / 12 / 100
             time = get_validated_numeric_input("Enter a number of months over which the bond will be repaid: ")
 
+            # Check if time is 0 to prevent division by zero
+            if time == 0:
+                print("Invalid input. The repayment period must be greater than 0.")
+                continue
+
             # Calculate the monthly repayment amount
             monthly_repayment = (monthly_interest * house_value) / (1 - (1 + monthly_interest) ** (-time))
-            return monthly_repayment
 
             # Display monthly repayment amount
             print(f"If you take a bond for {house_value} in house value, for {time} months, with the annual interest rate of "
-                  f"{interest} - your monthly payment will be equal to:  {round(monthly_repayment)}")
+                f"{interest} - your monthly payment will be equal to:  {round(monthly_repayment)}")
+            return monthly_repayment
+
         except ZeroDivisionError:
             print("You cannot divide by 0. ")
 

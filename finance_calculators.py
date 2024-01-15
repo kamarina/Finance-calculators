@@ -30,25 +30,24 @@ class FinancialCalculators:
                                                                              "interest rate: ")
             interest = interest_rate / 100
             time = FinancialCalculators.get_validated_numeric_input("How many years you would like to invest for: ")
-            interest_type = input("Please enter the interest type 'simple' or 'compound': ").lower()
-            if interest_type not in ["simple", "compound"]:
-                print("Invalid selection. Please type 'simple' or 'compound'.")
+            interest_type = input("Please select the interest type. Enter 's' for simple interest "
+                                  "or 'c' for compound': ").lower()
+            if interest_type not in ["s", "c"]:
+                print("Invalid selection. Please type 's' for simple interest or 'c' for compound.")
                 return  # Exit the function if the input is invalid
 
                 # Calculate the total amount based on the selected interest type
-            if interest_type == "simple":
-                total_amount = principal * (1 + interest * time)
-                interest_earned = total_amount - principal
-                print(f"You will be earning {round(interest_earned)} in interest if you invest {principal} "
+            if interest_type == "s":  # If simple calculate using simple interest formula
+                interest_earned = principal * (1 + interest * time) 
+                print(f"You will be earning £{round(interest_earned)} in interest if you invest £{principal} "
                       f"for {time} years.")
                 return interest_earned
 
-            elif interest_type == "compound":
-                total_amount = principal * math.pow((1 + interest), time)
-                interest_earned = total_amount - principal
-                print(f"You will be earning {interest_earned} in interest if you invest {principal} "
+            elif interest_type == "c":  # If compound calculate using compound interest formula
+                interest_earned_c = principal * math.pow((1 + interest), time)
+                print(f"You will be earning £{round(interest_earned_c)} in interest if you invest £{principal} "
                       f"for {time} years.")
-                return interest_earned  # Exit the function after successful calculation
+                return interest_earned_c  # Exit the function after successful calculation
         except ValueError:
             print("Invalid input. Please enter a numeric value. ")
 
@@ -72,8 +71,8 @@ class FinancialCalculators:
             monthly_repayment = (monthly_interest * house_value) / (1 - (1 + monthly_interest) ** (-time))
 
             # Display monthly repayment amount
-            print(f"If you take a bond for {house_value} in house value, for {time} months, with the annual interest "
-                  f"rate of {interest} - your monthly payment will be equal to:  {round(monthly_repayment)}")
+            print(f"If you take a bond for £{house_value} in house value, for {time} months, with the annual interest "
+                  f"rate of {interest}% - your monthly payment will be equal to:  £{round(monthly_repayment)}")
             return monthly_repayment  # Exit the function after successful calculation
 
         except ZeroDivisionError:
@@ -84,23 +83,22 @@ def main():
     # Display menu options and prompt for user selection
     print("investment - to calculate the amount of interest you'll earn on your investment")
     print("bond - to calculate the amount you'll have to pay on a home loan")
-    choice = input("\n\nWould you like to carry out an 'investment' or 'bond':").lower()
+    choice = input("\n\nEnter 'i' to carry out an investment or 'b' to carry out bond:").lower()
 
     # Validate user selection
-    while choice not in ["investment", "bond"]:
-        print("Invalid selection. Please enter either 'investment' or 'bond'.")
+    while choice not in ["i", "b"]:
+        print("Invalid selection. Please enter either 'i' for investment or 'b' for bond.")
         choice = input("Please enter either 'investment' or 'bond' to proceed:").lower()
 
     #  Create a variable for the financial calculator class
     calculator = FinancialCalculators()
 
     # Execute the selected function based on user choice
-    if choice == "bond":
+    if choice == "b":
         calculator.bond_interest()
-    elif choice == "investment":
+    elif choice == "i":
         calculator.investment_interest()
 
 
 if __name__ == "__main__":
     main()
-    

@@ -38,7 +38,7 @@ class FinancialCalculators:
 
                 # Calculate the total amount based on the selected interest type
             if interest_type == "s":  # If simple calculate using simple interest formula
-                interest_earned = principal * (1 + interest * time) 
+                interest_earned = principal * (1 + interest * time)
                 print(f"You will be earning £{round(interest_earned)} in interest if you invest £{principal} "
                       f"for {time} years.")
                 return interest_earned
